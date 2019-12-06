@@ -9,7 +9,7 @@ module.exports = {
             subscribe: () => pubsub.asyncIterator([CLICK_BROADCAST]),
         },
     },
-    Mutation: {
+    Query: {
         broadcastClick: async (_:any, {timestamp, type}:{[key:string]:string}, __:any) => {
             pubsub.publish(CLICK_BROADCAST, { clickBroadcast: {timestamp, type} })
             return { success: true, message: 'Broadcast successful!' }

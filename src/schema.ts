@@ -1,11 +1,6 @@
 const { gql } = require('apollo-server')
 
 const typedefs = gql`
-    type Book {
-        title: String
-        author: String
-    }
-
     enum Colour {
         blue
         orange
@@ -22,10 +17,6 @@ const typedefs = gql`
     }
 
     type Query {
-        books: [Book]
-    }
-
-    type Mutation {
         broadcastClick(timestamp: String!, type: Colour!): ClickBroadcastResponse!
     }
 
