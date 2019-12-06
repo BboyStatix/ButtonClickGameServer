@@ -12,14 +12,13 @@ const typedefs = gql`
     }
 
     type Click {
-        timestamp: String
-        type: Colour
+        timestamp: String!
+        type: Colour!
     }
 
     type ClickBroadcastResponse {
         success: Boolean!
         message: String
-        click: Click
     }
 
     type Query {
@@ -27,7 +26,7 @@ const typedefs = gql`
     }
 
     type Mutation {
-        broadcastClick(timestamp: String, type: String): ClickBroadcastResponse!
+        broadcastClick(timestamp: String!, type: Colour!): ClickBroadcastResponse!
     }
 
     type Subscription {
