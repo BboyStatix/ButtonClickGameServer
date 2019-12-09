@@ -3,6 +3,11 @@ const pubsub = new PubSub();
 
 const CLICK_BROADCAST = 'CLICK_BROADCAST';
 
+interface Click {
+    timestamp: string,
+    type: string
+}
+
 module.exports = {
     Subscription: {
         clickBroadcast: {
@@ -10,9 +15,9 @@ module.exports = {
         },
     },
     Query: {
-        broadcastClick: async (_:any, {timestamp, type}:{[key:string]:string}, __:any) => {
-            pubsub.publish(CLICK_BROADCAST, { clickBroadcast: {timestamp, type} })
+        broadcastClick: async (_:any, {timestamp, type}:Click, __:any) => {
+            await pubsub.publish(CLICK_BROADCAST, { clickBroadcast: {timestamp, type} })
             return { success: true, message: 'Broadcast successful!' }
-        },
+        }
     }
 }
